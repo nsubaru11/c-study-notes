@@ -1,0 +1,49 @@
+# ビルド成果物
+*.out
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Eclipse, CLion, VSCodeなどのIDE用
+*.log
+*.dep
+.vscode/
+.idea/
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+.cproject
+.project
+
+# バックアップ・一時ファイル
+*~
+*.swp
+*.tmp
+.DS_Store
+
+# ctags, gtags
+tags
+TAGS
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+
+# テスト出力
+/test-output/
+*.gcda
+*.gcno
+*.gcov
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# その他
+a.out

@@ -1,0 +1,15 @@
+# ninja log v6
+1	128	7673790559349725	CMakeFiles/DoublyLinkedList.dir/main.c.obj	a9dc7adbfca3f30d
+3	123	7673790774900936	CMakeFiles/DoublyLinkedList.dir/main.c.obj	a9dc7adbfca3f30d
+22	156	7673790775090789	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.obj	213e729ab0295c06
+157	810	7673790776431027	DoublyLinkedList.exe	5f4e76286438a2b5
+3	120	7673791227101660	CMakeFiles/DoublyLinkedList.dir/main.c.obj	a9dc7adbfca3f30d
+121	305	7673791228268380	DoublyLinkedList.exe	5f4e76286438a2b5
+4	122	7673791551598904	CMakeFiles/DoublyLinkedList.dir/main.c.obj	a9dc7adbfca3f30d
+123	305	7673791552788117	DoublyLinkedList.exe	5f4e76286438a2b5
+5	127	7673791769104214	CMakeFiles/DoublyLinkedList.dir/main.c.obj	a9dc7adbfca3f30d
+128	312	7673791770329665	DoublyLinkedList.exe	5f4e76286438a2b5
+8	134	7673792186842466	CMakeFiles/DoublyLinkedList.dir/main.c.obj	a9dc7adbfca3f30d
+136	327	7673792188109911	DoublyLinkedList.exe	5f4e76286438a2b5
+3	128	7673792321467266	CMakeFiles/DoublyLinkedList.dir/main.c.obj	a9dc7adbfca3f30d
+130	310	7673792322735452	DoublyLinkedList.exe	5f4e76286438a2b5
