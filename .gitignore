@@ -40,6 +40,9 @@ GTAGS
 *.gcov
 
 # CMake
+cmake-build-debug/
+CMakeLists.txt
+.clang-format
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
