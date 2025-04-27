@@ -4,48 +4,38 @@
 
 typedef struct String {
     char *array;
-    int len, capacity;
-    int hashCode;
-
-    struct String * (*new_String)(char *);
+    int len, capacity, hashCode;
 
     void (*free_String)(struct String *);
 
-    void (*resize)(struct String *);
+    int (*equals)(const struct String *, const struct String *);
 
-    int (*hash)(struct String *);
+    void (*concat)(struct String *, const struct String *);
 
-    int (*equals)(struct String *, struct String *);
-
-    int (*length)(const struct String *);
-
-    struct String * (*concat)(struct String *, const struct String *);
+    void (*concat_chars)(struct String *, const char *);
 
     void (*append)(struct String *, char);
 
-    char (*charAt)(struct String *, int);
+    char (*charAt)(const struct String *, int);
 
-    char * (*chars)(struct String *);
+    void (*set)(struct String *, int, char);
 } String;
 
 String *new_String();
 
-int hash(const String *str);
-
-char charAt(const String *str, int index);
-
-int equals(const String *str1, const String *str2);
-
-char *chars(const String *str);
+String *new_String_from_chars(const char *c);
 
 void free_String(String *str);
 
-void resize(String *str);
+int equals(const String *str1, const String *str2);
 
-int length(const String *str);
+void concat(String *str1, const String *str2);
 
-String *concat(String *str1, const String *str2);
+void concat_chars(String *str1, const char *str2);
 
 void append(String *str1, char c);
 
+char charAt(const String *str, int index);
+
+void set(String *str, int index, char c);
 #endif
