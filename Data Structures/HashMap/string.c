@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// ================== private ===================
+
 void resize(String *str) {
     str->capacity *= 2;
     char *tmp = realloc(str->array, str->capacity);
@@ -15,6 +17,8 @@ void resize(String *str) {
         exit(1);
     }
 }
+
+// ------------------ ƒƒ‚ƒŠŠm•Û -------------------
 
 String *new_String() {
     String *str = malloc(sizeof(String));
@@ -40,7 +44,7 @@ String *new_String_from_chars(const char *c) {
     str->array = malloc(sizeof(char) * str->capacity);
     memcpy(str->array, c, str->len);
     for (int i = 0; i < str->len; i++) {
-        str->hashCode = str->hashCode * 31 + str->array[i];
+        str->hashCode = (str->hashCode << 5) - str->hashCode + str->array[i];
     }
 
     str->free_String = free_String;
@@ -52,12 +56,16 @@ String *new_String_from_chars(const char *c) {
     return str;
 }
 
+// ------------------ ƒƒ‚ƒŠ‰ð•ú -------------------
+
 void free_String(String *str) {
     if (str) {
         free(str->array);
         free(str);
     }
 }
+
+// ------------------ String Methods -------------------
 
 int equals(const String *str1, const String *str2) {
     if (str1->len != str2->len) {
@@ -67,32 +75,35 @@ int equals(const String *str1, const String *str2) {
 }
 
 void concat(String *str1, const String *str2) {
-    while (str1->len + str2->len > str1->capacity) {
+    char *arr = str1->array;
+    const int len1 = str1->len;
+    const int len2 = str2->len;
+    while (len1 + len2 > str1->capacity) {
         resize(str1);
     }
-    memcpy(str1->array + str1->len, str2->array, str2->len);
-    for (int i = 0; i < str2->len; i++) {
-        str1->hashCode = str1->hashCode * 31 + str1->array[str1->len + i];
+    memcpy(arr + len1, str2->array, len2);
+    for (int i = 0; i < len2; i++) {
+        str1->hashCode = (str1->hashCode << 5) - str1->hashCode + arr[len1 + i];
     }
-    str1->len += str2->len;
+    str1->len += len2;
 }
 
 void concat_chars(String *str1, const char *str2) {
-    const int len = (int) strlen(str2);
-    while (str1->len + len > str1->capacity) {
+    char *arr = str1->array;
+    const int len1 = str1->len;
+    const int len2 = (int) strlen(str2);
+    while (len1 + len2 > str1->capacity) {
         resize(str1);
     }
-    memcpy(str1->array + str1->len, str2, len);
-    for (int i = 0; i < len; i++) {
-        str1->hashCode = str1->hashCode * 31 + str1->array[str1->len + i];
+    memcpy(arr + len1, str2, len2);
+    for (int i = 0; i < len2; i++) {
+        str1->hashCode = (str1->hashCode << 5) - str1->hashCode + arr[len1 + i];
     }
-    str1->len += len;
+    str1->len += len2;
 }
 
 void append(String *str1, const char c) {
-    if (str1->len + 1 > str1->capacity) {
-        resize(str1);
-    }
+    if (str1->len + 1 > str1->capacity) resize(str1);
     str1->array[str1->len++] = c;
     str1->hashCode = str1->hashCode * 31 + c;
 }
@@ -112,6 +123,6 @@ void set(String *str, const int index, const char c) {
     }
     str->array[index] = c;
     for (int i = 0; i < str->len; i++) {
-        str->hashCode = str->hashCode * 31 + str->array[i];
+        str->hashCode = (str->hashCode << 5) - str->hashCode + str->array[i];
     }
 }
