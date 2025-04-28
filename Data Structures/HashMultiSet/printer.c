@@ -81,6 +81,10 @@ void print_int(Printer *out, int n) {
         out->buffer[out->pos++] = '-';
         n = -n;
     }
+    if (n == 0) {
+        out->buffer[out->pos++] = '0';
+        return;
+    }
     int l = out->pos;
     while (n > 0) {
         out->buffer[out->pos++] = (char) (n % 10 + '0');
@@ -103,6 +107,10 @@ void print_long(Printer *out, long long n) {
     if (n < 0) {
         out->buffer[out->pos++] = '-';
         n = -n;
+    }
+    if (n == 0) {
+        out->buffer[out->pos++] = '0';
+        return;
     }
     int l = out->pos;
     while (n > 0) {

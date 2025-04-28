@@ -34,6 +34,7 @@ String *new_String() {
     str->append = append;
     str->charAt = charAt;
     str->set = set;
+    str->sort = sort;
     return str;
 }
 
@@ -53,6 +54,7 @@ String *new_String_from_chars(const char *c) {
     str->concat_chars = concat_chars;
     str->append = append;
     str->charAt = charAt;
+    str->sort = sort;
     return str;
 }
 
@@ -69,6 +71,9 @@ void free_String(String *str) {
 
 int equals(const String *str1, const String *str2) {
     if (str1->len != str2->len) {
+        return 0;
+    }
+    if (str1->hashCode != str2->hashCode) {
         return 0;
     }
     return !memcmp(str1->array, str2->array, str1->len);
@@ -125,4 +130,37 @@ void set(String *str, const int index, const char c) {
     for (int i = 0; i < str->len; i++) {
         str->hashCode = (str->hashCode << 5) - str->hashCode + str->array[i];
     }
+}
+
+void swap(String *str, int i, int j) {
+    char tmp = str->array[i];
+    str->array[i] = str->array[j];
+    str->array[j] = tmp;
+}
+
+void sort_range(String *str, int left, int right) {
+    if (right <= left) return;
+    int l = left;
+    int r = right;
+    int mid = (left + right) / 2;
+    char pivot = str->array[mid];
+    while (l < r) {
+        while (l < r && pivot > str->array[l]) l++;
+        while (l < r && pivot <= str->array[r]) r--;
+        if (l >= r) break;
+        swap(str, l, r);
+        l++;
+        r--;
+    }
+    while (r < right && str->array[r] <= pivot) r++;
+    if (mid > r) {
+        swap(str, mid, r);
+        r++;
+    }
+    sort_range(str, left, l);
+    sort_range(str, r, right);
+}
+
+void sort(String *str) {
+    sort_range(str, 0, str->len - 1);
 }

@@ -9,6 +9,8 @@ typedef struct Scanner {
 
     void (*free_Scanner)(struct Scanner *);
 
+    int (*hasNext)(struct Scanner *);
+
     String *(*next)(struct Scanner *);
 
     String *(*nextLine)(struct Scanner *);
@@ -23,6 +25,8 @@ typedef struct Scanner {
 Scanner *new_Scanner();
 
 void free_Scanner(Scanner *sc);
+
+int hasNext(Scanner *sc);
 
 String *next(Scanner *sc);
 

@@ -36,12 +36,23 @@ int read_stdin(Scanner *sc) {
     if (sc->pos >= sc->cnt) {
         sc->cnt = read(STDIN_FILENO, sc->buffer, sc->BUFFER_SIZE);
         if (sc->cnt <= 0) {
-            printf("read error");
-            exit(1);
+            return 0;
         }
         sc->pos = 0;
     }
     return sc->buffer[sc->pos++];
+}
+
+int hasNext(Scanner *sc) {
+    if (sc->pos < sc->cnt) {
+        return 1;
+    }
+    sc->cnt = read(STDIN_FILENO, sc->buffer, sc->BUFFER_SIZE);
+    if (sc->cnt <= 0) {
+        return 0;
+    }
+    sc->pos = 0;
+    return 0;
 }
 
 String *next(Scanner *sc) {
