@@ -3,43 +3,47 @@
 #include <string.h>
 
 typedef struct String {
-    char *array;
-    int len, capacity, hashCode;
+	char* array;
+	int len, capacity, hashCode;
 
-    void (*free_String)(struct String *);
+	void (*free_String)(struct String*);
 
-    int (*equals)(const struct String *, const struct String *);
+	int (*equals)(const struct String*, const struct String*);
 
-    void (*concat)(struct String *, const struct String *);
+	int (*compareTo)(const struct String*, const struct String*);
 
-    void (*concat_chars)(struct String *, const char *);
+	void (*concat)(struct String*, const struct String*);
 
-    void (*append)(struct String *, char);
+	void (*concatChars)(struct String*, const char*);
 
-    char (*charAt)(const struct String *, int);
+	void (*append)(struct String*, char);
 
-    void (*set)(struct String *, int, char);
+	char (*charAt)(const struct String*, int);
 
-    void (*sort)(struct String *);
+	void (*set)(struct String*, int, char);
+
+	void (*strSort)(struct String*);
 } String;
 
-String *new_String();
+String* new_String();
 
-String *new_String_from_chars(const char *c);
+String* new_String_from_chars(const char*);
 
-void free_String(String *str);
+void free_String(String*);
 
-int equals(const String *str1, const String *str2);
+int equals(const String*, const String*);
 
-void concat(String *str1, const String *str2);
+int compareTo(const String*, const String*);
 
-void concat_chars(String *str1, const char *str2);
+void concat(String*, const String*);
 
-void append(String *str1, char c);
+void concatChars(String*, const char*);
 
-char charAt(const String *str, int index);
+void append(String*, char);
 
-void set(String *str, int index, char c);
+char charAt(const String*, int);
 
-void sort(String *str);
+void set(String*, int, char);
+
+void strSort(String*);
 #endif
