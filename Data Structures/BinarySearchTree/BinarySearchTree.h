@@ -2,60 +2,60 @@
 #define BINARYSEARCHTREE_H
 
 typedef struct BinarySearchTree {
-    int size, cnt, label;
-    struct BinarySearchTree *left, *right;
+	int size, cnt, label;
+	struct BinarySearchTree *left, *right;
 
-    void (*free_BinarySearchTree)(struct BinarySearchTree *tree);
+	void (*free_BinarySearchTree)(struct BinarySearchTree*);
 
-    int (*add)(struct BinarySearchTree *tree, int value);
+	int (*add)(struct BinarySearchTree*, int);
 
-    struct BinarySearchTree * (*get)(struct BinarySearchTree *tree, int index);
+	struct BinarySearchTree* (*get)(struct BinarySearchTree*, int);
 
-    int (*indexOf)(const struct BinarySearchTree *tree, int value);
+	int (*indexOf)(const struct BinarySearchTree*, int);
 
-    struct BinarySearchTree * (*higher)(struct BinarySearchTree *tree, int value);
+	struct BinarySearchTree* (*higher)(struct BinarySearchTree*, int);
 
-    struct BinarySearchTree * (*lower)(struct BinarySearchTree *tree, int value);
+	struct BinarySearchTree* (*lower)(struct BinarySearchTree*, int);
 
-    struct BinarySearchTree * (*ceiling)(struct BinarySearchTree *tree, int value);
+	struct BinarySearchTree* (*ceiling)(struct BinarySearchTree*, int);
 
-    struct BinarySearchTree * (*flooring)(struct BinarySearchTree *tree, int value);
+	struct BinarySearchTree* (*flooring)(struct BinarySearchTree*, int);
 
-    int (*getCount)(const struct BinarySearchTree *tree, int value);
+	int (*count)(const struct BinarySearchTree*, int);
 
-    // int (*remove)(struct BinarySearchTree *tree, int value);
+	// int (*remove)(struct BinarySearchTree*, int);
 
-    struct BinarySearchTree *(*head)(struct BinarySearchTree *tree);
+	struct BinarySearchTree* (*head)(struct BinarySearchTree*);
 
-    struct BinarySearchTree *(*tail)(struct BinarySearchTree *tree);
+	struct BinarySearchTree* (*tail)(struct BinarySearchTree*);
 } BinarySearchTree;
 
-BinarySearchTree *new_BinarySearchTree();
+BinarySearchTree* new_BinarySearchTree();
 
-BinarySearchTree *new_BinarySearchTreeNode(int n);
+BinarySearchTree* new_BinarySearchTreeNode(int);
 
-void free_BinarySearchTree(BinarySearchTree *tree);
+void free_BinarySearchTree(BinarySearchTree*);
 
-int add(BinarySearchTree *tree, int value);
+int add(BinarySearchTree*, int);
 
-BinarySearchTree *get(BinarySearchTree *tree, int index);
+BinarySearchTree* get(BinarySearchTree*, int);
 
-int indexOf(const BinarySearchTree *tree, int value);
+int indexOf(const BinarySearchTree*, int);
 
-BinarySearchTree *higher(BinarySearchTree *tree, int value);
+BinarySearchTree* higher(BinarySearchTree*, int);
 
-BinarySearchTree *lower(BinarySearchTree *tree, int value);
+BinarySearchTree* lower(BinarySearchTree*, int);
 
-BinarySearchTree *ceiling(BinarySearchTree *tree, int value);
+BinarySearchTree* ceiling(BinarySearchTree*, int);
 
-BinarySearchTree *flooring(BinarySearchTree *tree, int value);
+BinarySearchTree* flooring(BinarySearchTree*, int);
 
-int getCount(const BinarySearchTree *tree, int value);
+int count(const BinarySearchTree*, int);
 
-// int remove(BinarySearchTree *tree, int value);
+// int remove(BinarySearchTree*, int);
 
-BinarySearchTree *head(BinarySearchTree *tree);
+BinarySearchTree* head(BinarySearchTree*);
 
-BinarySearchTree *tail(BinarySearchTree *tree);
+BinarySearchTree* tail(BinarySearchTree* tree);
 
 #endif
