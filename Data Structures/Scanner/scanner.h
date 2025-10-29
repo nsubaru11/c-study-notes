@@ -1,41 +1,41 @@
 #ifndef SCANNER_H
 #define SCANNER_H
-#include "string.h"
+#include "../String/string.h"
 
 typedef struct Scanner {
-    unsigned char *buffer;
-    int BUFFER_SIZE, pos;
-    unsigned long long cnt;
+	unsigned char* buffer;
+	int BUFFER_SIZE, pos;
+	unsigned long long cnt;
 
-    void (*free_Scanner)(struct Scanner *);
+	void (*free_Scanner)(struct Scanner*);
 
-    int (*hasNext)(struct Scanner *);
+	int (*hasNext)(struct Scanner*);
 
-    String *(*next)(struct Scanner *);
+	String* (*next)(struct Scanner*);
 
-    String *(*nextLine)(struct Scanner *);
+	String* (*nextLine)(struct Scanner*);
 
-    int (*nextInt)(struct Scanner *);
+	int (*nextInt)(struct Scanner*);
 
-    long long (*nextLong)(struct Scanner *);
+	long long (*nextLong)(struct Scanner*);
 
-    double (*nextDouble)(struct Scanner *);
+	double (*nextDouble)(struct Scanner*);
 } Scanner;
 
-Scanner *new_Scanner();
+Scanner* new_Scanner();
 
-void free_Scanner(Scanner *sc);
+void free_Scanner(Scanner*);
 
-int hasNext(Scanner *sc);
+int hasNext(Scanner*);
 
-String *next(Scanner *sc);
+String* next(Scanner*);
 
-String *nextLine(Scanner *sc);
+String* nextLine(Scanner*);
 
-int nextInt(Scanner *sc);
+int nextInt(Scanner*);
 
-long long nextLong(Scanner *sc);
+long long nextLong(Scanner*);
 
-double nextDouble(Scanner *sc);
+double nextDouble(Scanner*);
 
 #endif
