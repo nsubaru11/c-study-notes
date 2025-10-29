@@ -1,44 +1,44 @@
 #ifndef MULTISET_H
 #define MULTISET_H
 
-#include "string.h"
+#include "../String/string.h"
 
 typedef struct Node {
-    String *value;
-    int cnt;
-    struct Node *next;
+	String* value;
+	int cnt;
+	struct Node* next;
 } Node;
 
 typedef struct HashMultiSet {
-    int size, capacity;
-    double LOADFACTOR;
-    Node **buckets;
+	int size, capacity;
+	double LOADFACTOR;
+	Node** buckets;
 
-    void (*free_HashMultiSet)(struct HashMultiSet *map);
+	void (*free_HashMultiSet)(struct HashMultiSet*);
 
-    void (*insert)(struct HashMultiSet *map, String *key);
+	void (*insert)(struct HashMultiSet*, String*);
 
-    int (*count)(struct HashMultiSet *map, String *key);
+	int (*count)(struct HashMultiSet*, String*);
 
-    void (*remove_node)(struct HashMultiSet *map, String *key);
+	void (*remove_node)(struct HashMultiSet*, String*);
 
-    int (*contains)(struct HashMultiSet *map, String *key);
+	int (*contains)(struct HashMultiSet*, String*);
 } HashMultiSet;
 
-Node *new_Node(String *value);
+Node* new_Node(String*);
 
-void free_nodes(Node *node);
+void free_nodes(Node*);
 
-HashMultiSet *new_HashMultiSet();
+HashMultiSet* new_HashMultiSet();
 
-void free_HashMultiSet(HashMultiSet *map);
+void free_HashMultiSet(HashMultiSet*);
 
-void insert(HashMultiSet *map, String *key);
+void insert(HashMultiSet*, String*);
 
-int count(HashMultiSet *map, String *key);
+int count(HashMultiSet*, String*);
 
-void remove_node(HashMultiSet *map, String *key);
+void remove_node(HashMultiSet*, String*);
 
-int contains(HashMultiSet *map, String *key);
+int contains(HashMultiSet*, String*);
 
 #endif
