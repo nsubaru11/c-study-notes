@@ -1,37 +1,45 @@
 #include <stdio.h>
 #include "DoublyLinkedList.h"
 
-void print(DoublyLinkedList *list);
+void print(DoublyLinkedList* list);
 
 int main(void) {
-	DoublyLinkedList *list = new_DoublyLinkedList(); // 初期化
-	print(list); // 現在のリストの表示
+	DoublyLinkedList* list = new_DoublyLinkedList();
+	print(list);
 
 	for (int i = 0; i < 10; i++) {
-		list->addFirst(list, i); // addFirst のテスト
-		list->addLast(list, i); // addLast のテスト
+		list->addFirst(list, i);
+		list->addLast(list, i);
 	}
-	print(list); // 現在のリストの表示
+	print(list);
 
 	for (int i = 0; i <= list->size; i += 5) {
-		list->insert(list, i, 1000); // insert のテスト
+		list->insert(list, i, 1000);
 	}
-	print(list); // 現在のリストの表示
+	print(list);
 
-	printf("peekFirst: %d, ", list->peekFirst(list)); // peekFirstのテスト
-	printf("pollFirst: %d\n", list->pollFirst(list)); // pollLastのテスト
-	printf("peekLast: %d, ", list->peekLast(list)); // peekLastのテスト
-	printf("pollLast: %d\n\n", list->pollLast(list)); //  pollLastのテスト
+	printf("peekFirst: %d, ", list->peekFirst(list));
+	printf("pollFirst: %d\n", list->pollFirst(list));
+	printf("peekLast: %d, ", list->peekLast(list));
+	printf("pollLast: %d\n\n", list->pollLast(list));
 	list->set(list, list->size / 2, 2000);
-	print(list); // 現在のリストの表示
+	print(list);
 
-	list->free_doubly_linked_list(list); // メモリの開放
+	DoublyLinkedList* list2 = new_DoublyLinkedList();
+	for (int i = 0; i < 5; i++)
+		list2->addLast(list2, i);
+	print(list2);
+	list2->insert(list2, 2, 100);
+	print(list2);
+
+	list->destroyDoublyLinkedList(list);
+	list2->destroyDoublyLinkedList(list2);
 	return 0;
 }
 
-void print(DoublyLinkedList *list) {
-	printf("isEmpty? %s, ", list->isEmpty(list) ? "true" : "false"); // isEmpty のテスト
-	printf("size: %d\n", list->size); // 要素数の表示
+void print(DoublyLinkedList* list) {
+	printf("isEmpty? %s, ", list->isEmpty(list) ? "true" : "false");
+	printf("size: %d\n", list->size);
 	printf("List:");
 	for (int i = 0; i < list->size; i++) {
 		printf(" %d", list->get(list, i));
